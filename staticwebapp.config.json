@@ -23,12 +23,6 @@
             ]
         },
         {
-            "route": "/api/admin/*",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
             "route": "/books/*",
             "serve": "/books.html"
         }

@@ -26,12 +26,12 @@ async function testpost() {
     await fetch("/api/admin/books", {mode: "same-origin", method: "POST"});
 }
 
-async function testput() {
-    await fetch("/api/admin/books/asdsadsadsad", {mode: "same-origin", method: "PUT"});
+async function testput(id) {
+    await fetch("/api/admin/books/" + id, {mode: "same-origin", method: "PUT"});
 }
 
-async function testdelete() {
-    await fetch("/api/admin/books/asdsadsadsad", {mode: "same-origin", method: "DELETE"});
+async function testdelete(id) {
+    await fetch("/api/admin/books/" + id, {mode: "same-origin", method: "DELETE"});
 }
 
 async function testget(id) {
