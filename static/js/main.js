@@ -21,7 +21,11 @@ async function populatetable() {
         clone.querySelector("#tabledata-author").innerText = book.Author;
         clone.querySelector("#tabledata-series").innerText = book.Series;
         clone.querySelector("#tabledata-language").innerText = book.Language;
-        clone.querySelector("#tabledata-read").innerText = book.Read;
+        if (book.Read)
+            clone.querySelector("#tabledata-read").innerText = "✔️";
+        else
+            clone.querySelector("#tabledata-read").innerText = "❌";
+
         container.appendChild(clone);
     });
     
