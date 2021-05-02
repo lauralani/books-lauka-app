@@ -3,14 +3,19 @@
     "proxies": {
         "Books-Put-Delete-Mock": {
             "matchCondition": {
-                "route": "/api/books/{id}", 
-                "methods": ["PUT", "DELETE"]
+                "route": "/api/admin/books/{id}",
+                "methods": [
+                    "PUT",
+                    "DELETE"
+                ]
             }
         },
         "Books-Post-Mock": {
             "matchCondition": {
-                "route": "/api/books", 
-                "methods": ["POST"]
+                "route": "/api/admin/books",
+                "methods": [
+                    "POST"
+                ]
             }
         }
     }

@@ -15,7 +15,7 @@ async function getbook() {
         return null;
 
     try {
-        response = await fetch("/api/books/" + querystring, { mode: "same-origin" }).json();
+        response = await fetch("/api/public/books/" + querystring, { mode: "same-origin" }).json();
     } catch (error) {
         return null;
     }
@@ -23,17 +23,17 @@ async function getbook() {
 }
 
 async function testpost() {
-    await fetch("/api/books", {mode: "same-origin", method: "POST"});
+    await fetch("/api/admin/books", {mode: "same-origin", method: "POST"});
 }
 
 async function testput() {
-    await fetch("/api/books/asdsadsadsad", {mode: "same-origin", method: "PUT"});
+    await fetch("/api/admin/books/asdsadsadsad", {mode: "same-origin", method: "PUT"});
 }
 
 async function testdelete() {
-    await fetch("/api/books/asdsadsadsad", {mode: "same-origin", method: "DELETE"});
+    await fetch("/api/admin/books/asdsadsadsad", {mode: "same-origin", method: "DELETE"});
 }
 
 async function testget(id) {
-    await fetch("/api/books/" + id, {mode: "same-origin", method: "GET"});
+    await fetch("/api/public/books/" + id, {mode: "same-origin", method: "GET"});
 }

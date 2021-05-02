@@ -13,7 +13,7 @@ namespace Books
     {
         [FunctionName("books-get")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "books/{id}")] HttpRequest req, string id)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books/{id}")] HttpRequest req, string id)
         {
             TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
             Book book = await db.GetItemByKeyAsync<Book>(id);
