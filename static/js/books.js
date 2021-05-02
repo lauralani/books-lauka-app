@@ -1,5 +1,6 @@
 async function onloadbooks() {
-    console.log(await getbook())
+    var book = await getbook();
+    document.getElementById("query").innerText = book?.Title;
 }
 
 async function getquerystring() {
@@ -10,12 +11,12 @@ async function getquerystring() {
 
 async function getbook() {
     var body;
-    var querystring = await getquerystring();
+    var querystring = window.location.search.split("?")[1];
     if (querystring === null)
         return null;
 
     try {
-        response = await fetch("/api/public/books/" + querystring, { mode: "same-origin" }).json();
+        response = await (await fetch("/api/public/books/" + querystring, { mode: "same-origin" })).json();
     } catch (error) {
         return null;
     }

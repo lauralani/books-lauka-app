@@ -29,7 +29,7 @@
             ]
         },
         {
-            "route": "/books/*",
+            "route": "/books",
             "serve": "/books.html"
         }
     ],
