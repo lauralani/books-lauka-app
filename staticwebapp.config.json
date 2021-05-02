@@ -23,6 +23,16 @@
             ]
         },
         {
+            "route": "/api/backend/*",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
+            "route": "/books/",
+            "statusCode": 404
+        },
+        {
             "route": "/books/*",
             "serve": "/books.html"
         }

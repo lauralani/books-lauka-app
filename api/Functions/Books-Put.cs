@@ -13,7 +13,7 @@ namespace Books
     {
         [FunctionName("books-put")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "public/books/{id}")] HttpRequest req, string id)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "put", Route = "backend/books/{id}")] HttpRequest req, string id)
         {
             return new OkObjectResult(id);
         }

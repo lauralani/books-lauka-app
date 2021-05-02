@@ -13,7 +13,7 @@ namespace Books
     {
         [FunctionName("books-delete")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "public/books/{id}")] HttpRequest req, string id)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "backend/books/{id}")] HttpRequest req, string id)
         {
             return new OkObjectResult(id);
         }

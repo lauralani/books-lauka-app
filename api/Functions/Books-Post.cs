@@ -13,7 +13,7 @@ namespace Books
     {
         [FunctionName("books-post")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "public/books")] HttpRequest req)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "backend/books")] HttpRequest req)
         {
             return new NoContentResult();
         }

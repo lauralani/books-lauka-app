@@ -23,15 +23,15 @@ async function getbook() {
 }
 
 async function testpost() {
-    await fetch("/api/admin/books", {mode: "same-origin", method: "POST"});
+    await fetch("/api/backend/books", {mode: "same-origin", method: "POST"});
 }
 
 async function testput(id) {
-    await fetch("/api/admin/books/" + id, {mode: "same-origin", method: "PUT"});
+    await fetch("/api/backend/books/" + id, {mode: "same-origin", method: "PUT"});
 }
 
 async function testdelete(id) {
-    await fetch("/api/admin/books/" + id, {mode: "same-origin", method: "DELETE"});
+    await fetch("/api/backend/books/" + id, {mode: "same-origin", method: "DELETE"});
 }
 
 async function testget(id) {
