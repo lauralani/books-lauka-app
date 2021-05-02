@@ -22,16 +22,18 @@ async function getreferrer() {
     document.getElementById("referrer").innerText = referrer;
 }
 async function handlelogin() {
-    var principal;
+    var principal, request;
 
     console.log(window.location);
     try {
-        principal = await fetch("/.auth/me", { mode: "same-origin" }).json()
+        request = await fetch("/.auth/me", { mode: "same-origin" });
+        principal = await request.json();
     } catch (error) {
+        console.log("error getting login info");
+    }
+    console.log(principal);
+    if (principal.clientPrincipal === null) {
         let returnurl = window.location.origin + "/admin/index.html";
         window.location = "/.auth/login/aad?post_login_redirect_uri=" + returnurl;
     }
-
-    window.location = "/admin/index.html";
-
 }
