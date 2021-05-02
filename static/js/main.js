@@ -17,14 +17,14 @@ async function populatetable() {
 
     books.forEach(book => {
         let clone = template.content.cloneNode(true);
-        clone.querySelector("#tabledata-title").innerText = book.Title;
-        clone.querySelector("#tabledata-author").innerText = book.Author;
-        clone.querySelector("#tabledata-series").innerText = book.Series;
-        clone.querySelector("#tabledata-language").innerText = book.Language;
+        clone.querySelector("#td-title").innerText = book.Title;
+        clone.querySelector("#td-author").innerText = book.Author;
+        clone.querySelector("#td-series").innerText = book.Series;
+        clone.querySelector("#td-language").innerText = book.Language;
         if (book.Read)
-            clone.querySelector("#tabledata-read").innerText = "✔️";
+            clone.querySelector("#td-read").innerText = "✔️";
         else
-            clone.querySelector("#tabledata-read").innerText = "❌";
+            clone.querySelector("#td-read").innerText = "❌";
 
         container.appendChild(clone);
     });
