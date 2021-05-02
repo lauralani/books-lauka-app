@@ -1,6 +1,22 @@
 {
     "routes": [
         {
+            "route": "/.auth/login/facebook",
+            "statusCode": 404
+        },
+        {
+            "route": "/.auth/login/github",
+            "statusCode": 404
+        },
+        {
+            "route": "/.auth/login/google",
+            "statusCode": 404
+        },
+        {
+            "route": "/.auth/login/twitter",
+            "statusCode": 404
+        },
+        {
             "route": "/admin/*",
             "allowedRoles": [
                 "admin"
@@ -16,16 +32,19 @@
             "allowedRoles": [
                 "admin"
             ]
+        },
+        {
+            "route": "/books/",
+            "statusCode": 404
+        },
+        {
+            "route": "/books",
+            "statusCode": 404
+        },
+        {
+            "route": "/books/*",
+            "serve": "/books.html"
         }
     ],
-    "responseOverrides": {
-        "401": {
-          "statusCode": 302,
-          "redirect": "/login.html"
-        },
-        "403": {
-            "statusCode": 302,
-            "redirect": "/login.html"
-          }
-    }
+    "responseOverrides": {}
 }
