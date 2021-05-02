@@ -23,21 +23,6 @@
             ]
         },
         {
-            "route": "/api/*",
-            "methods": [
-                "PUT",
-                "POST",
-                "DELETE"
-            ],
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/books/",
-            "statusCode": 404
-        },
-        {
             "route": "/books/*",
             "serve": "/books.html"
         }

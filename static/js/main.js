@@ -3,7 +3,7 @@ async function onloadmain() {
 }
 
 async function populatetable() {
-    const books = await (await fetch("/api/books", { mode: "same-origin" })).json();
+    const books = await (await fetch("/api/public/books", { mode: "same-origin" })).json();
 
     if (books === null) {
         return 1;

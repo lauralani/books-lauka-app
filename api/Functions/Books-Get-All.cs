@@ -17,7 +17,7 @@ namespace Books
     {
         [FunctionName("books-get-all")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "books")] HttpRequest req)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books")] HttpRequest req)
         {
             TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
             List<Book> books = await db.GetAllItemsAsync<Book>();
