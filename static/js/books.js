@@ -33,3 +33,7 @@ async function testput() {
 async function testdelete() {
     await fetch("/api/books/asdsadsadsad", {mode: "same-origin", method: "DELETE"});
 }
+
+async function testget(id) {
+    await fetch("/api/books/" + id, {mode: "same-origin", method: "GET"});
+}
