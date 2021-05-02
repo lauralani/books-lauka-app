@@ -1,11 +1,8 @@
-body {
-    display: flex;
-    justify-content: center;
-}
-
 #table-wrapper {
-    width: 90%;
-    padding-top: 1em;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    padding: 2em;
 }
 
 #table-wrapper table {

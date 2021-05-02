@@ -22,7 +22,15 @@ namespace Books
             TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
             List<Book> books = db.GetAllBooks().ToList();
 
+            if (!string.IsNullOrWhiteSpace(req.Query["last"]))
+            {
+                int last;
+                if (!int.TryParse(req.Query["last"], out last))
+                    return new BadRequestObjectResult("Query \"last\" must be a whole number!");
+                List<Book> lastbooks = books.Take<Book>(last).ToList();
 
+                return new ContentResult { Content = JsonConvert.SerializeObject(lastbooks), ContentType = "application/json", StatusCode = 200 };
+            }
             return new ContentResult { Content = JsonConvert.SerializeObject(books), ContentType = "application/json", StatusCode = 200 };
         }
     }
