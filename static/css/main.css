@@ -1,3 +1,7 @@
+nav {
+    border-bottom: 1px solid var(--bs-gray);
+}
+
 #table-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -7,4 +11,12 @@
 
 #table-wrapper table {
     border-radius: 20px;
+}
+
+footer {
+    text-align: center;
+    padding: 6px;
+    color: white;
+    background: #212529;
+    border-top: 1px solid var(--bs-gray);
 }

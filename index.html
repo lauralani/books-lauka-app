@@ -25,16 +25,18 @@
     </template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
         <div class="container-fluid">
-          <a class="navbar-brand" href="/">Lauras Books 📚</a>
-          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-          </button>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="https://www.laurakalb.de">Homepage</a>
-              </li>
-              <!--
+            <a class="navbar-brand" href="/">Lauras Books 📚</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://www.laurakalb.de">Homepage</a>
+                    </li>
+                    <!--
               <li class="nav-item">
                 <a class="nav-link" href="#">Link</a>
               </li>
@@ -53,23 +55,24 @@
                 <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
               </li>
               -->
-            </ul>
-            <ul class="navbar-nav me-2">
-                <li class="nav-item">
-                  <a class="nav-link active" referrerpolicy="same-origin" href="login.html">Backend</a>
-                </li>
-                
-              </ul>
-          </div>
+                </ul>
+                <ul class="navbar-nav me-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" referrerpolicy="same-origin" href="login.html">Backend</a>
+                    </li>
+
+                </ul>
+            </div>
         </div>
-      </nav>
+    </nav>
 
 
-      
+
     <div id="table-wrapper">
         <div class="input-group mb-3">
             <span class="input-group-text" id="filter">Filter</span>
-            <input id="input-filter" type="text" class="form-control" placeholder="Star Wars, Heitz, etc." onkeyup='filtertable("input-filter", "books-table", "book-row")''>
+            <input id="input-filter" type="text" class="form-control" placeholder="Star Wars, Heitz, etc."
+                onkeyup='filtertable("input-filter", "books-table", "book-row")''>
           </div>
         <table id="books-table" class="table table-dark">
             <thead>
@@ -92,6 +95,12 @@
             </tbody>
         </table>
     </div>
+
+    <footer>
+        Made with <a target="_blank" class="link-info" href="https://azure.microsoft.com/en-us/services/app-service/static/">Azure Static Web Apps</a> 
+         and ❤️ by <a href="https://github.com/lauralani" class="link-info" target="_blank">Laura</a>. 
+         <a href="https://github.com/lauralani/books-lauka-app" class="link-info" target="_blank">Source</a>
+    </footer> 
 </body>
 
 </html>

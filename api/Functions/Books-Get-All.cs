@@ -20,7 +20,32 @@ namespace Books
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "books")] HttpRequest req)
         {
             TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
-            List<Book> books = db.GetAllBooks().ToList();
+            List<Book> books = await db.GetAllItemsAsync<Book>();
+
+            if (!string.IsNullOrWhiteSpace(req.Query["sortby"]))
+            {
+                string sortby = req.Query["sortby"];
+                switch (sortby.ToLowerInvariant())
+                {
+                    case "author":
+                        books = books.OrderBy(o => o.Author).ToList();
+                        break;
+                    case "genre":
+                        books = books.OrderBy(o => o.Genre).ToList();
+                        break;
+                    case "series":
+                        books = books.OrderBy(o => o.Series).ToList();
+                        break;
+                    case "universe":
+                        books = books.OrderBy(o => o.Universe).ToList();
+                        break;
+                    default:
+                        books = books.OrderBy(o => o.Title).ToList();
+                        break;
+                }
+            }
+            else
+                books = books.OrderBy(o => o.Title).ToList();
 
             if (!string.IsNullOrWhiteSpace(req.Query["last"]))
             {
