@@ -12,6 +12,7 @@ namespace Books.Classes
         public string Title { get; set; }
         public string Universe { get; set; }
         public string Series { get; set; }
+        public string Language { get; set; }
         public bool Read { get; set; }
         public bool Lent { get; set; }
 

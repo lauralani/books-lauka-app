@@ -1,0 +1,31 @@
+{
+    "routes": [
+        {
+            "route": "/admin/*",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
+            "route": "/api/*",
+            "methods": [
+                "PUT",
+                "POST",
+                "DELETE"
+            ],
+            "allowedRoles": [
+                "admin"
+            ]
+        }
+    ],
+    "responseOverrides": {
+        "401": {
+          "statusCode": 302,
+          "redirect": "/login.html"
+        },
+        "403": {
+            "statusCode": 302,
+            "redirect": "/login.html"
+          }
+    }
+}
