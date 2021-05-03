@@ -1,7 +1,7 @@
 async function onloadbooks() {
     var book = await getbook();
 
-    await populateform(book);
+    await populatepage(book);
 }
 
 async function getbook() {
@@ -18,11 +18,12 @@ async function getbook() {
     return response;
 }
 
-async function populateform(book) {
+async function populatepage(book) {
     if (book === undefined || book === null) {
         document.getElementById("input-id").value = "Invalid ID!";
     }
     else {
+        document.title = "Details: " + book?.Title;
         document.getElementById("input-id").value = book?.RowKey;
         document.getElementById("input-title").value = book?.Title;
         document.getElementById("input-author").value = book?.Author;

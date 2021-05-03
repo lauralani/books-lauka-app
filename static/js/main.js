@@ -1,8 +1,8 @@
 async function onloadmain() {
-    await populatetable();
+    await populatepage();
 }
 
-async function populatetable() {
+async function populatepage() {
     const books = await (await fetch("/api/public/books", { mode: "same-origin" })).json();
 
     if (books === null) {
