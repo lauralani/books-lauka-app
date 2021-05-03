@@ -1,12 +1,100 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta charset='utf-8'>
     <meta http-equiv='X-UA-Compatible' content='IE=edge'>
-    <title>Adminpage</title>
+    <title>📚 Admin Dashboard</title>
     <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/shared.css'>
+    <link rel='stylesheet' type='text/css' media='screen' href='/static/css/main.css'>
+    <script src='/static/admin/js/admin-main.js' defer></script>
+    <script src='/static/js/shared.js' defer></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <script src="https://kit.fontawesome.com/0876af65c5.js" crossorigin="anonymous"></script>
 </head>
-<body>
-    asdsadsadsadsad
+
+<body onload="onloadadminmain()" class="bg-dark">
+    <template id="template-tablerow">
+        <tr class="book-row">
+            <td id="td-id" class="hidden"></td>
+            <td id="td-title" class="searchable"></td>
+            <td id="td-author" class="searchable"></td>
+            <td id="td-series" class="searchable"></td>
+            <td id="td-universe" class="searchable"></td>
+            <td id="td-language" class="searchable"></td>
+            <td id="td-read" class="searchable"></td>
+            <td id="td-edit" class="searchable"><a href=""><button type="button" class="btn btn-warning btn-sm"><i class="fas fa-pencil-alt"></i></button></a></td>
+            <td id="td-delete" class="searchable"><a href=""><button type="button" class="btn btn-danger btn-sm"><i class="far fa-trash-alt"></i></button></a></td>
+        </tr>
+    </template>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="/">📚 Admin Dashboard</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="https://www.laurakalb.de">Homepage</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav me-2">
+                    <li class="nav-item">
+                        <a class="nav-link active" referrerpolicy="same-origin" href="/.auth/logout">Logout</a>
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+
+    <div id="table-wrapper">
+        <div class="input-group mb-3">
+            <span class="input-group-text" id="filter">Filter</span>
+            <input id="input-filter" type="text" class="form-control" placeholder="Star Wars, Heitz, etc."
+                onkeyup='filtertable("input-filter", "books-table", "book-row")''>
+          </div>
+        <table id="books-table" class="table table-dark">
+            <thead>
+                <tr>
+                    <th scope="col" class="hidden">ID</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Author</th>
+                    <th scope="col">Series</th>
+                    <th scope="col">Universe</th>
+                    <th scope="col">Language</th>
+                    <th scope="col">Read</th>
+                    <th scope="col">Edit</th>
+                    <th scope="col">Delete</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>Loading...</td>
+                    <td>❔</td>
+                    <td>❔</td>
+                    <td></td>
+                    <td></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <footer>
+        Made with <a target="_blank" class="link-info" href="https://azure.microsoft.com/en-us/services/app-service/static/">Azure Static Web Apps</a> 
+         and ❤️ by <a href="https://github.com/lauralani" class="link-info" target="_blank">Laura</a>. 
+         <a href="https://github.com/lauralani/books-lauka-app" class="link-info" target="_blank">Source</a>
+    </footer> 
 </body>
+
 </html>
