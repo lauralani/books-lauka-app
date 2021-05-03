@@ -1,0 +1,12 @@
+nav {
+    border-bottom: 1px solid var(--bs-gray);
+}
+
+footer {
+    height: 40px;
+    text-align: center;
+    padding: 6px;
+    color: white;
+    background: #212529;
+    border-top: 1px solid var(--bs-gray);
+}
