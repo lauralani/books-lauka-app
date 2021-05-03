@@ -17,6 +17,31 @@
             "statusCode": 404
         },
         {
+            "route": "/books",
+            "serve": "/books.html"
+        },
+        {
+            "route": "/admin/add",
+            "serve": "/admin/add.html",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
+            "route": "/admin/edit",
+            "serve": "/admin/edit.html",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
+            "route": "/admin/delete",
+            "serve": "/admin/delete.html",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
             "route": "/admin/*",
             "allowedRoles": [
                 "admin"
@@ -27,22 +52,6 @@
             "allowedRoles": [
                 "admin"
             ]
-        },
-        {
-            "route": "/books",
-            "serve": "/books.html"
-        },
-        {
-            "route": "/admin/add",
-            "serve": "/admin/add.html"
-        },
-        {
-            "route": "/admin/edit",
-            "serve": "/admin/edit.html"
-        },
-        {
-            "route": "/admin/delete",
-            "serve": "/admin/delete.html"
         }
     ],
     "responseOverrides": {}
