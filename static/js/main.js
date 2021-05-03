@@ -21,6 +21,7 @@ async function populatepage() {
         clone.querySelector("#td-title").querySelector("a").href = window.location.origin + "/books?" + book.RowKey;
         clone.querySelector("#td-author").innerText = book.Author;
         clone.querySelector("#td-series").innerText = book.Series;
+        clone.querySelector("#td-universe").innerText = book.Universe;
         if (book.Read)
             clone.querySelector("#td-read").innerText = "✔️";
         else
