@@ -15,7 +15,28 @@ namespace Books
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "post", Route = "backend/books")] HttpRequest req)
         {
-            return new NoContentResult();
+            System.IO.StreamReader sr = new System.IO.StreamReader(req.Body);
+            string requestbody = await sr.ReadToEndAsync();
+            Book newbook;
+
+            try
+            {
+                newbook = JsonConvert.DeserializeObject<Book>(requestbody);
+            }
+            catch
+            {
+                return new BadRequestResult();
+            }
+
+            newbook.RowKey = Guid.NewGuid().ToString();
+            newbook.PartitionKey = newbook.RowKey;
+            newbook.Timestamp = DateTime.Now;
+            
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
+
+            await db.AddItemAsync<Book>(newbook);
+
+            return new CreatedResult($"{(req.IsHttps ? "https://" : "http://")}{req.Headers["Host"]}/api/public/books/{newbook.RowKey}", null);
         }
     }
 }

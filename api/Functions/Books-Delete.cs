@@ -13,9 +13,17 @@ namespace Books
     {
         [FunctionName("books-delete")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "backend/books/{id}")] HttpRequest req, string id)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "backend/books/{bookid}")] HttpRequest req, string bookid)
         {
-            return new OkObjectResult(id);
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
+            Book requestedbook = await db.GetItemByKeyAsync<Book>(bookid);
+
+            if (requestedbook == null)
+                return new NotFoundResult();
+            
+            await db.DeleteItemAsync<Book>(requestedbook);
+
+            return new NoContentResult();
         }
     }
 }
