@@ -16,11 +16,12 @@
 <body onload="onloadmain()" class="bg-dark">
     <template id="template-tablerow">
         <tr class="book-row">
-            <td id="td-title">Der Zorn des Admirals</td>
-            <td id="td-author">Timothy Zahn</td>
-            <td id="td-series">Hand von Thrawn-Trilogie</td>
-            <td id="td-language">DE</td>
-            <td id="td-read">❌</td>
+            <td id="td-id" class="hidden"></td>
+            <td id="td-title" class="searchable"><a href="" class="link-light"></a></td>
+            <td id="td-author" class="searchable"></td>
+            <td id="td-series" class="searchable"></td>
+            <td id="td-language" class="searchable"></td>
+            <td id="td-read" class="searchable"></td>
         </tr>
     </template>
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -77,6 +78,7 @@
         <table id="books-table" class="table table-dark">
             <thead>
                 <tr>
+                    <th scope="col" class="hidden">ID</th>
                     <th scope="col">Title</th>
                     <th scope="col">Author</th>
                     <th scope="col">Series</th>

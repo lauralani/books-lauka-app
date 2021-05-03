@@ -16,7 +16,9 @@ async function populatetable() {
 
     books.forEach(book => {
         let clone = template.content.cloneNode(true);
-        clone.querySelector("#td-title").innerText = book.Title;
+        clone.querySelector("#td-id").innerText = book.RowKey;
+        clone.querySelector("#td-title").querySelector("a").innerText = book.Title;
+        clone.querySelector("#td-title").querySelector("a").href = window.location.origin + "/books?" + book.RowKey;
         clone.querySelector("#td-author").innerText = book.Author;
         clone.querySelector("#td-series").innerText = book.Series;
         if (book.Read)

@@ -8,7 +8,7 @@ function filtertable( inputid, tableid, rowclass ) {
 
     for(let row of rowlist) {
         var filterhit = false;
-        for (let rowitem of row.getElementsByTagName("td")) {
+        for (let rowitem of row.getElementsByClassName("searchable")) {
             var rowitemtext = rowitem.textContent || rowitem.innerText;
             if (rowitemtext.toUpperCase().indexOf(filter) > -1) {
                 filterhit = true;

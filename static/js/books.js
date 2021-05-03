@@ -1,18 +1,13 @@
 async function onloadbooks() {
     var book = await getbook();
-    document.getElementById("query").innerText = book?.Title;
-}
 
-async function getquerystring() {
-    var fullpath = window.location.pathname;
-    var fragments = fullpath.split("/");
-    return fragments[fragments.length - 1];
+    await populateform(book);
 }
 
 async function getbook() {
     var body;
     var querystring = window.location.search.split("?")[1];
-    if (querystring === null)
+    if (querystring === undefined)
         return null;
 
     try {
@@ -23,18 +18,38 @@ async function getbook() {
     return response;
 }
 
+async function populateform(book) {
+    if (book === undefined || book === null) {
+        document.getElementById("input-id").value = "Invalid ID!";
+    }
+    else {
+        document.getElementById("input-id").value = book?.RowKey;
+        document.getElementById("input-title").value = book?.Title;
+        document.getElementById("input-author").value = book?.Author;
+        document.getElementById("input-series").value = book?.Series;
+        document.getElementById("input-universe").value = book?.Universe;
+        document.getElementById("input-genre").value = book?.Genre;
+        document.getElementById("input-language").value = book?.Language;
+        document.getElementById("input-read").checked = book?.Read || false;
+        document.getElementById("input-lent").checked = book?.Lent || false;
+    }
+}
+
 async function testpost() {
-    await fetch("/api/backend/books", {mode: "same-origin", method: "POST"});
+    await fetch("/api/backend/books", { mode: "same-origin", method: "POST" });
 }
 
 async function testput(id) {
-    await fetch("/api/backend/books/" + id, {mode: "same-origin", method: "PUT"});
+    await fetch("/api/backend/books/" + id, { mode: "same-origin", method: "PUT" });
 }
 
 async function testdelete(id) {
-    await fetch("/api/backend/books/" + id, {mode: "same-origin", method: "DELETE"});
+    await fetch("/api/backend/books/" + id, { mode: "same-origin", method: "DELETE" });
 }
 
 async function testget(id) {
-    await fetch("/api/public/books/" + id, {mode: "same-origin", method: "GET"});
+    id ?
+        await fetch("/api/public/books/" + id, { mode: "same-origin", method: "GET" }) :
+        await fetch("/api/public/books", { mode: "same-origin", method: "GET" });
+
 }
