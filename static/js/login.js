@@ -32,8 +32,9 @@ async function handlelogin() {
         console.log("error getting login info");
     }
     console.log(principal);
-    if (principal.clientPrincipal === null) {
-        let returnurl = window.location.origin + "/admin/index.html";
+    let returnurl = window.location.origin + "/admin/dashboard";
+    if (principal.clientPrincipal === null) 
         window.location = "/.auth/login/aad?post_login_redirect_uri=" + returnurl;
-    }
+    else
+        window.location = returnurl;
 }

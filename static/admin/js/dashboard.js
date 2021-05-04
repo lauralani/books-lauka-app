@@ -1,4 +1,4 @@
-async function onloadmain() {
+async function onloadadminmain() {
     await populatepage();
 }
 
@@ -17,11 +17,12 @@ async function populatepage() {
     books.forEach(book => {
         let clone = template.content.cloneNode(true);
         clone.querySelector("#td-id").innerText = book.RowKey;
-        clone.querySelector("#td-title").querySelector("a").innerText = book.Title;
-        clone.querySelector("#td-title").querySelector("a").href = window.location.origin + "/details?" + book.RowKey;
+        clone.querySelector("#td-title").innerText = book.Title;
         clone.querySelector("#td-author").innerText = book.Author;
         clone.querySelector("#td-series").innerText = book.Series;
         clone.querySelector("#td-universe").innerText = book.Universe;
+        clone.querySelector("#td-edit").querySelector("a").href = window.location.origin + "/admin/edit?" + book.RowKey;
+        clone.querySelector("#td-delete").querySelector("a").href = window.location.origin + "/admin/delete?" + book.RowKey;
         if (book.Read)
             clone.querySelector("#td-read").innerText = "✔️";
         else
