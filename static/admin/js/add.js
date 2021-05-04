@@ -74,3 +74,7 @@ async function clearform() {
     document.getElementById("input-read").checked = false;
     document.getElementById("input-lent").checked = false;
 }
+
+async function addcancel() {
+    window.location = "/admin/dashboard";
+}
