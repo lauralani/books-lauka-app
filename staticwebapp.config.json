@@ -17,8 +17,8 @@
             "statusCode": 404
         },
         {
-            "route": "/books",
-            "serve": "/books.html"
+            "route": "/details",
+            "serve": "/details.html"
         },
         {
             "route": "/admin/add",
@@ -37,6 +37,13 @@
         {
             "route": "/admin/delete",
             "serve": "/admin/delete.html",
+            "allowedRoles": [
+                "admin"
+            ]
+        },
+        {
+            "route": "/admin/dashboard",
+            "serve": "/admin/dashboard.html",
             "allowedRoles": [
                 "admin"
             ]
