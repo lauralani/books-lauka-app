@@ -1,7 +1,7 @@
 var book;
 
 
-async function onloaddelete() {
+async function onloadedit() {
     book = await getbook();
     await populatepage(book);
 }
@@ -38,24 +38,38 @@ async function populatepage(book) {
     }
 }
 
-async function deletesubmit() {
-    document.getElementById("button-confirm").textContent = "Loading...";
-    document.getElementById("button-confirm").disabled = true;
+async function editsubmit() {
+    var newbook = {
+        Author: document.getElementById("input-author").value,
+        Genre: document.getElementById("input-genre").value,
+        Title: document.getElementById("input-title").value,
+        Universe: document.getElementById("input-universe").value,
+        Series: document.getElementById("input-series").value,
+        Language: document.getElementById("input-language").value,
+        Read: document.getElementById("input-read").checked,
+        Lent: document.getElementById("input-lent").checked,
+        RowKey: book.RowKey,
+        PartitionKey: book.PartitionKey
+    };
+
+    document.getElementById("button-save").textContent = "Loading...";
+    document.getElementById("button-save").disabled = true;
 
     var response = await fetch("/api/backend/books/" + book.RowKey, {
         mode: "same-origin",
-        method: "DELETE"
+        method: "PUT",
+        body: JSON.stringify(newbook)
     });
 
     if (response.ok) {
         window.location = "/admin/dashboard";
     }
     else {
-        document.getElementById("button-confirm").textContent = "something went wrong!";
+        document.getElementById("button-save").textContent = "something went wrong!";
         console.log(response);
     }
 }
 
-async function deletecancel() {
+async function editcancel() {
     window.location = "/admin/dashboard";
 }
