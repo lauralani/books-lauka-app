@@ -15,7 +15,7 @@ namespace Books
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books/{bookid}")] HttpRequest req, string bookid)
         {
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "test");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
             
             Console.WriteLine(bookid);
             

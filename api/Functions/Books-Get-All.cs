@@ -19,7 +19,7 @@ namespace Books
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books")] HttpRequest req)
         {
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "test");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
             List<Book> books = await db.GetAllItemsAsync<Book>();
 
             if (!string.IsNullOrWhiteSpace(req.Query["sortby"]))

@@ -38,7 +38,7 @@ namespace Books
             if (!string.IsNullOrWhiteSpace(newbook.PartitionKey) && newbook.PartitionKey != splitbookid.PartitionKey)
                 return new BadRequestResult();
 
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "test");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
 
             Book dbbook = await db.GetItemByIDAsync<Book>(bookid);
 

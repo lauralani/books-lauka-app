@@ -32,7 +32,7 @@ namespace Books
             newbook.PartitionKey = newbook.Title.Substring(0, 1).ToLowerInvariant();
             newbook.Timestamp = DateTime.Now;
             
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "test");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
 
             await db.AddItemAsync<Book>(newbook);
 
