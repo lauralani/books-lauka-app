@@ -15,8 +15,8 @@ namespace Books
         public static async Task<IActionResult> Run(
             [HttpTrigger(AuthorizationLevel.Anonymous, "delete", Route = "backend/books/{bookid}")] HttpRequest req, string bookid)
         {
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
-            Book requestedbook = await db.GetItemByKeyAsync<Book>(bookid);
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "test");
+            Book requestedbook = await db.GetItemByIDAsync<Book>(bookid);
 
             if (requestedbook == null)
                 return new NotFoundResult();

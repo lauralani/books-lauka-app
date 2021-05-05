@@ -24,18 +24,23 @@ namespace Books.Classes
             return _client.GetTableReference(tablename);
         }
 
-        public async Task<T> GetItemByKeyAsync<T>(string key) where T : TableEntity
+        public async Task<T> GetItemByKeyAsync<T>(string partitionKey, string rowKey) where T : TableEntity
         {
-            TableOperation op = TableOperation.Retrieve<T>(key, key);
+            TableOperation op = TableOperation.Retrieve<T>(partitionKey, rowKey);
             TableResult result = await _table.ExecuteAsync(op);
             return result.Result as T;
         }
 
-        [Obsolete()]
-        public IEnumerable<Book> GetAllBooks()
+        public async Task<T> GetItemByIDAsync<T>(string id) where T : TableEntity
         {
-            TableQuery<Book> query = new TableQuery<Book>();
-            return _table.ExecuteQuery(query).OrderBy(o => o.Title);
+            string[] idarray = id.Split("-");
+
+            Console.WriteLine(idarray[0]);
+            Console.WriteLine(idarray[1]);
+
+            TableOperation op = TableOperation.Retrieve<T>(idarray[0], idarray[1]);
+            TableResult result = await _table.ExecuteAsync(op);
+            return result.Result as T;
         }
 
         public async Task<List<T>> GetAllItemsAsync<T>() where T : TableEntity, new()

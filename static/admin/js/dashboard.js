@@ -16,13 +16,13 @@ async function populatepage() {
 
     books.forEach(book => {
         let clone = template.content.cloneNode(true);
-        clone.querySelector("#td-id").innerText = book.RowKey;
+        clone.querySelector("#td-id").innerText = book.ID;
         clone.querySelector("#td-title").innerText = book.Title;
         clone.querySelector("#td-author").innerText = book.Author;
         clone.querySelector("#td-series").innerText = book.Series;
         clone.querySelector("#td-universe").innerText = book.Universe;
-        clone.querySelector("#td-edit").querySelector("a").href = window.location.origin + "/admin/edit?" + book.RowKey;
-        clone.querySelector("#td-delete").querySelector("a").href = window.location.origin + "/admin/delete?" + book.RowKey;
+        clone.querySelector("#td-edit").querySelector("a").href = window.location.origin + "/admin/edit?" + book.ID;
+        clone.querySelector("#td-delete").querySelector("a").href = window.location.origin + "/admin/delete?" + book.ID;
         if (book.Read)
             clone.querySelector("#td-read").innerText = "✔️";
         else

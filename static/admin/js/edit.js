@@ -26,7 +26,7 @@ async function populatepage(book) {
         document.getElementById("button-confirm").disabled = true;
     }
     else {
-        document.getElementById("input-id").value = book?.RowKey;
+        document.getElementById("input-id").value = book?.ID;
         document.getElementById("input-title").value = book?.Title;
         document.getElementById("input-author").value = book?.Author;
         document.getElementById("input-series").value = book?.Series;
@@ -55,7 +55,7 @@ async function editsubmit() {
     document.getElementById("button-save").textContent = "Loading...";
     document.getElementById("button-save").disabled = true;
 
-    var response = await fetch("/api/backend/books/" + book.RowKey, {
+    var response = await fetch("/api/backend/books/" + book.ID, {
         mode: "same-origin",
         method: "PUT",
         body: JSON.stringify(newbook)
