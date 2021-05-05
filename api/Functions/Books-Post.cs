@@ -28,11 +28,11 @@ namespace Books
                 return new BadRequestResult();
             }
 
-            newbook.RowKey = Guid.NewGuid().ToString();
-            newbook.PartitionKey = newbook.RowKey;
+            newbook.RowKey = Guid.NewGuid().ToString().Split("-")[0];
+            newbook.PartitionKey = newbook.Title.Substring(0, 1).ToLowerInvariant();
             newbook.Timestamp = DateTime.Now;
             
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
 
             await db.AddItemAsync<Book>(newbook);
 

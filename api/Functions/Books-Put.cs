@@ -6,6 +6,7 @@ using Microsoft.Azure.WebJobs.Extensions.Http;
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 using Books.Classes;
+using System.Dynamic;
 
 namespace Books
 {
@@ -27,18 +28,22 @@ namespace Books
             {
                 return new BadRequestResult();
             }
+            
+            dynamic splitbookid = new ExpandoObject();
+            splitbookid.PartitionKey = bookid.Split("-")[0];
+            splitbookid.RowKey = bookid.Split("-")[1];
 
-            if (!string.IsNullOrWhiteSpace(newbook.RowKey) && newbook.RowKey != bookid)
+            if (!string.IsNullOrWhiteSpace(newbook.RowKey) && newbook.RowKey != splitbookid.RowKey)
                 return new BadRequestResult();
-            if (!string.IsNullOrWhiteSpace(newbook.PartitionKey) && newbook.PartitionKey != bookid)
+            if (!string.IsNullOrWhiteSpace(newbook.PartitionKey) && newbook.PartitionKey != splitbookid.PartitionKey)
                 return new BadRequestResult();
 
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
 
-            Book dbbook = await db.GetItemByKeyAsync<Book>(bookid);
+            Book dbbook = await db.GetItemByIDAsync<Book>(bookid);
 
-            newbook.RowKey = bookid;
-            newbook.PartitionKey = bookid;
+            newbook.RowKey = splitbookid.RowKey;
+            newbook.PartitionKey = splitbookid.PartitionKey;
 
 
             if (dbbook == null)
@@ -46,7 +51,7 @@ namespace Books
                 // book doesnt exist already
                 newbook.Timestamp = DateTime.Now;
                 await db.AddItemAsync<Book>(newbook);
-                return new CreatedResult($"{(req.IsHttps ? "https://" : "http://")}{req.Headers["Host"]}/api/public/books/{newbook.RowKey}", null);
+                return new CreatedResult($"{(req.IsHttps ? "https://" : "http://")}{req.Headers["Host"]}/api/public/books/{newbook.ID}", null);
             }
             else
             {

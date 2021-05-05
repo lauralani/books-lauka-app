@@ -7,6 +7,9 @@ namespace Books.Classes
 {
     class Book : TableEntity
     {
+        public string ID {
+            get { return $"{this.PartitionKey}-{this.RowKey}"; }
+        }
         public string Author { get; set; }
         public string Genre { get; set; }
         public string Title { get; set; }

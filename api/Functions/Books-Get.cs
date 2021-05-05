@@ -13,10 +13,13 @@ namespace Books
     {
         [FunctionName("books-get")]
         public static async Task<IActionResult> Run(
-            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books/{id}")] HttpRequest req, string id)
+            [HttpTrigger(AuthorizationLevel.Anonymous, "get", Route = "public/books/{bookid}")] HttpRequest req, string bookid)
         {
-            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_STORAGEACCOUNT"), "books");
-            Book book = await db.GetItemByKeyAsync<Book>(id);
+            TableDatabase db = new TableDatabase(Environment.GetEnvironmentVariable("APP_COSMOSDB_CONNECTION"), Environment.GetEnvironmentVariable("APP_COSMOSDB_TABLE"));
+            
+            Console.WriteLine(bookid);
+            
+            Book book = await db.GetItemByIDAsync<Book>(bookid);
 
             if (book == null)
                 return new NotFoundResult();

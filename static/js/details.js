@@ -24,7 +24,7 @@ async function populatepage(book) {
     }
     else {
         document.title = "Details: " + book?.Title;
-        document.getElementById("input-id").value = book?.RowKey;
+        document.getElementById("input-id").value = book?.ID;
         document.getElementById("input-title").value = book?.Title;
         document.getElementById("input-author").value = book?.Author;
         document.getElementById("input-series").value = book?.Series;

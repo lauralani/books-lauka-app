@@ -16,9 +16,9 @@ async function populatepage() {
 
     books.forEach(book => {
         let clone = template.content.cloneNode(true);
-        clone.querySelector("#td-id").innerText = book.RowKey;
+        clone.querySelector("#td-id").innerText = book.ID;
         clone.querySelector("#td-title").querySelector("a").innerText = book.Title;
-        clone.querySelector("#td-title").querySelector("a").href = window.location.origin + "/details?" + book.RowKey;
+        clone.querySelector("#td-title").querySelector("a").href = window.location.origin + "/details?" + book.ID;
         clone.querySelector("#td-author").innerText = book.Author;
         clone.querySelector("#td-series").innerText = book.Series;
         clone.querySelector("#td-universe").innerText = book.Universe;
