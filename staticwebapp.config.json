@@ -2,7 +2,8 @@
     "routes": [
         {
             "route": "/*",
-            "redirect": "https://www.goodreads.com/user/show/141709488-laura"
+            "redirect": "https://www.goodreads.com/user/show/141709488-laura",
+            "statusCode": 301
         }
     ],
     "responseOverrides": {}
