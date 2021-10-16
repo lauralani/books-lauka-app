@@ -1,64 +1,8 @@
 {
     "routes": [
         {
-            "route": "/.auth/login/facebook",
-            "statusCode": 404
-        },
-        {
-            "route": "/.auth/login/github",
-            "statusCode": 404
-        },
-        {
-            "route": "/.auth/login/google",
-            "statusCode": 404
-        },
-        {
-            "route": "/.auth/login/twitter",
-            "statusCode": 404
-        },
-        {
-            "route": "/details",
-            "serve": "/details.html"
-        },
-        {
-            "route": "/admin/add",
-            "serve": "/admin/add.html",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/admin/edit",
-            "serve": "/admin/edit.html",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/admin/delete",
-            "serve": "/admin/delete.html",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/admin/dashboard",
-            "serve": "/admin/dashboard.html",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/admin/*",
-            "allowedRoles": [
-                "admin"
-            ]
-        },
-        {
-            "route": "/api/backend/*",
-            "allowedRoles": [
-                "admin"
-            ]
+            "route": "/*",
+            "redirect": "https://www.goodreads.com/user/show/141709488-laura"
         }
     ],
     "responseOverrides": {}
